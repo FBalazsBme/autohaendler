@@ -188,6 +188,7 @@ export class ConfigstepComponent{
   ]
 
   images6 = [
+    "../../assets/images/USB/usb0.PNG",
     "../../assets/images/USB/usb2.PNG",
     "../../assets/images/USB/usb4.PNG"
 
@@ -196,6 +197,9 @@ export class ConfigstepComponent{
   boxes6= [
     {
       infoText: "InfoText1",
+    },
+    {
+      infoText:"InfoText1",
     },
     {
       infoText:"InfoText1",

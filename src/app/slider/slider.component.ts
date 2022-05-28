@@ -8,7 +8,7 @@ import { MatSliderChange } from '@angular/material/slider';
 })
 export class SliderComponent implements OnInit {
 
-  @Output() selectPicture = new EventEmitter<number>();
+  @Output() selectImage = new EventEmitter<number>();
 
   constructor() { }
 
@@ -17,6 +17,6 @@ export class SliderComponent implements OnInit {
 
   emitValue(event: MatSliderChange) {
     const selection: number = event.value === null ? 0 : event.value;
-    this.selectPicture.emit(selection/2);
+    this.selectImage.emit(selection/2);
   }
 }

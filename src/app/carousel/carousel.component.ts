@@ -19,8 +19,13 @@ export class CarouselComponent{
   swipeCoord: [number, number] = [0,0];
   swipeTime = 0;
   selectedIndex = 0
+  toggleSlider = false;
+
+  constructor(private configstep: ConfigstepComponent){}
 
   selectImage(index: number): void {
+    console.log('selectImage');
+    console.log(index);
     this.selectedIndex = index;
   }
 
@@ -55,5 +60,8 @@ swipe(e: TouchEvent, when: string): void {
   }
   this.configstep.index=this.selectedIndex;
 }
-constructor(private configstep: ConfigstepComponent){}
+
+  toggleAppSlider(event: boolean) {
+    this.toggleSlider = event;
+  }
 }

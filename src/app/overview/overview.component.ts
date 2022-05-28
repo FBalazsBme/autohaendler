@@ -12,7 +12,7 @@ export class OverviewComponent {
   color: string;
   categories = Categories;
 
-@Output('onTest') onChange = new EventEmitter<boolean>();
+  @Output('onTest') onChange = new EventEmitter<boolean>();
 
   constructor(private configstep: ConfigstepComponent) {
     this.color = "#0286BC"
