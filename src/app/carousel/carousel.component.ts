@@ -14,13 +14,12 @@ interface box {
 export class CarouselComponent{
   @Input() images : string[] = []
   @Input() boxes: box[] = []
-
   @Input() count: number = 0;
 
   swipeCoord: [number, number] = [0,0];
   swipeTime = 0;
   selectedIndex = 0
-  
+
   selectImage(index: number): void {
     this.selectedIndex = index;
   }

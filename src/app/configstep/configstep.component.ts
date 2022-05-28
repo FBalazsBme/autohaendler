@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Categories } from '../utils/categories';
 
 
 @Component({
@@ -8,7 +9,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./configstep.component.css']
 })
 export class ConfigstepComponent{
-  categories: string[];
   categoriesImageMap = new Map<string, any>();
   categoriesBoxMap = new Map<string, any>();
   currentFeature: number;
@@ -16,34 +16,33 @@ export class ConfigstepComponent{
   index=0;
   selected = new FormControl(0);
   selectedcategoriesMap = new Map<string, any>();
+  categories = Categories;
 
   /** TODO CLAUDIA
    * @categories bla
-   * @categoriesImageMap bli 
+   * @categoriesImageMap bli
    * @categoriesBoxMap blu
    * @currentFeature indexing our feature step (subject to be changed by Tab bar or skip / back / add button)
    */
-  constructor() {  
-    this.categories = ["Aussenfarbe", "Sitze", "Interieurleisten","Motor","Chiptuning","USB","Zusammenfassung"]
+  constructor() {
+    this.categoriesImageMap.set(Categories.Aussenfarbe,this.images1)
+    this.categoriesImageMap.set(Categories.Sitze,this.images2)
+    this.categoriesImageMap.set(Categories.USB,this.images6)
 
-    this.categoriesImageMap.set(this.categories[0],this.images1)
-    this.categoriesImageMap.set(this.categories[1],this.images2)
-    this.categoriesImageMap.set(this.categories[5],this.images6)
-    
-  
-    this.categoriesBoxMap.set(this.categories[0],this.boxes1)
-    this.categoriesBoxMap.set(this.categories[1],this.boxes2)
-    this.categoriesBoxMap.set(this.categories[5],this.boxes6)
-    
-    this.categoriesImageMap.set(this.categories[2],this.images3)
-    this.categoriesImageMap.set(this.categories[3],this.images4)
-    this.categoriesImageMap.set(this.categories[5],this.images6)
-  
-    this.categoriesBoxMap.set(this.categories[0],this.boxes1)
-    this.categoriesBoxMap.set(this.categories[1],this.boxes2)
-    this.categoriesBoxMap.set(this.categories[2],this.boxes3)
-    this.categoriesBoxMap.set(this.categories[3],this.boxes4)
-    this.categoriesBoxMap.set(this.categories[5],this.boxes6)
+
+    this.categoriesBoxMap.set(Categories.Aussenfarbe,this.boxes1)
+    this.categoriesBoxMap.set(Categories.Sitze,this.boxes2)
+    this.categoriesBoxMap.set(Categories.USB,this.boxes6)
+
+    this.categoriesImageMap.set(Categories.Interieurleisten,this.images3)
+    this.categoriesImageMap.set(Categories.Motor,this.images4)
+    this.categoriesImageMap.set(Categories.USB,this.images6)
+
+    this.categoriesBoxMap.set(Categories.Aussenfarbe,this.boxes1)
+    this.categoriesBoxMap.set(Categories.Sitze,this.boxes2)
+    this.categoriesBoxMap.set(Categories.Interieurleisten,this.boxes3)
+    this.categoriesBoxMap.set(Categories.Motor,this.boxes4)
+    this.categoriesBoxMap.set(Categories.USB,this.boxes6)
 
     this.currentFeature = 0;
     this.selectedInital();
@@ -109,7 +108,7 @@ export class ConfigstepComponent{
       infoText: "InfoText4",
     }
   ]
- 
+
 
   images3 = [
     "../../assets/images/Interiuerleisten/Interiuerleiste1.png",
@@ -191,8 +190,8 @@ export class ConfigstepComponent{
   images6 = [
     "../../assets/images/USB/usb2.PNG",
     "../../assets/images/USB/usb4.PNG"
-    
-   
+
+
   ]
   boxes6= [
     {
@@ -207,13 +206,7 @@ export class ConfigstepComponent{
    return this.categoriesBoxMap.get(cat)
   }
   getIndex(cat:string){
-    let aktu =0;
-    for (let i=0; i<this.categories.length;i++){
-      if(this.categories[i]==cat){
-        aktu=i;
-      }
-    }
-    return aktu;
+    return Object.keys(Categories).indexOf(cat);
   }
 
   getImages(cat:string) {
@@ -232,13 +225,13 @@ export class ConfigstepComponent{
      this.count=zahl;
    }
    selectedInital():void{
-      for(let u=0;u<this.categories.length;u++){
-        this.selectedcategoriesMap.set(this.categories[u],"test");
+      for(const category in Object.values(Categories)){
+        this.selectedcategoriesMap.set(category,"test");
       }
-      console.log("Initialisierung abgeschlossen")
+      console.log("Initialisierung abgeschlossen");
    }
    selectedFeatures(indM:number,indA:number):void{
-    this.selectedcategoriesMap.set(this.categories[indM],indA)
+    this.selectedcategoriesMap.set(Object.values(Categories)[indM],indA)
    }
    viewSelected():void{
         for(const [key,value] of this.selectedcategoriesMap){
@@ -247,7 +240,14 @@ export class ConfigstepComponent{
    }
    onEditOverview(value: boolean){
      console.log("Hello World"+ value)
+   }
 
+   getEnumLength(): number {
+     return Object.keys(Categories).length;
+   }
+
+   getCategories(): string[] {
+    return Object.values(Categories);
    }
 }
 

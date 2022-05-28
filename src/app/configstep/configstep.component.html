@@ -1,22 +1,22 @@
-<div class="page"> 
+<div class="page">
 <app-toprow></app-toprow>
-<!-- 
+<!--
     cat:                ist die Nav Bar Beschreibung
     getIndex(cat):      liefert den Index von der Ausprägung im Array Categories
     getCount():         ist der Zähler, der den Ablauf steuert
-    getImageIndex():    liefert den Index der Merkmalsausprägung eines Merkmals 
+    getImageIndex():    liefert den Index der Merkmalsausprägung eines Merkmals
 -->
     <mat-tab-group [selectedIndex]="getCount()" (selectedIndexChange)="setCount($event)" >
-        <mat-tab *ngFor="let cat of categories, let index=index" label={{cat}}>
+        <mat-tab *ngFor="let cat of getCategories(), let index=index" label={{cat}}>
             <!-- {{cat}}   {{getIndex(cat)}}   {{getCount()}} {{getImagesIndex()}}-->
-          <app-carousel *ngIf="getCount()<categories.length-1"
+          <app-carousel *ngIf="getCount()<getEnumLength()-1"
           [count] = "getCount()"
           [images] = "getImages(cat)" [boxes] = "getBoxes(cat)"></app-carousel>
         </mat-tab>
     </mat-tab-group>
 <!--<app-carousel [images] = "images1" [boxes] = "boxes1"></app-carousel>-->
-<app-overview *ngIf="getCount()==categories.length-1" (onTest)="onEditOverview($event)"></app-overview> 
+<app-overview *ngIf="getCount()==getEnumLength()-1" (onTest)="onEditOverview($event)"></app-overview>
 
-<app-buttonrow *ngIf="getCount()<categories.length-1"></app-buttonrow>
+<app-buttonrow *ngIf="getCount()<getEnumLength()-1"></app-buttonrow>
 <!-- Buttons werden bis zum Merkmal - Zusammenfassung - angezeigt, danach werden andere Formatierungen der Buttons benötigt-->
 </div>
