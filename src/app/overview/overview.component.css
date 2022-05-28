@@ -1,0 +1,26 @@
+.mat-icon_farbe{
+    background-color:#0286BC;
+    color:white;
+}
+.overview{
+    max-width: 100%;
+}
+
+.mat-card-footer{
+    background-color: #0286BC;
+}
+.input{
+color:white;
+}
+
+.image {
+    float: left; 
+    width: 60%; 
+    min-height:100%;
+    margin-right: 20%; 
+    padding: 20px; 
+    background: #eee; 
+    box-sizing: border-box; 
+}
+
+

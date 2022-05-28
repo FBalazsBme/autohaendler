@@ -1,0 +1,18 @@
+<div class="container">
+<mat-card-content> 
+    <div [ngClass]="toggle ? 'flipped' : ''" class="card">
+      <div class="front">{{text}}
+        <ng-content select="flip-card-front"></ng-content>
+        <div (click)="doToggle()" class="Icon">
+          <mat-icon> info_outline </mat-icon>
+        </div>
+      </div>
+      <div class="back"><br><br>{{infoText +" TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest"}}
+        <ng-content select="flip-card-back"></ng-content>
+        <div (click)="doToggle()" class="Icon">
+          <mat-icon>info_outline </mat-icon>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</div>

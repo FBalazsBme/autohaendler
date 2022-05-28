@@ -1,0 +1,19 @@
+
+<div fxLayout="row wrap" fxLayoutAlign="center center"></div>
+<div *ngIf="images && images.length > 0" class="carousel-container">
+    
+    <img *ngFor="let image of images; let i = index"
+        [src]="image" 
+        [ngClass]="{'image-active': selectedIndex===i}">
+        <br>
+    <app-infobox (touchstart)="swipe($event,'start')" (touchend)="swipe($event, 'end')" *ngFor="let box of boxes; let i = index"
+    [text]="box.text" [infoText]="box.infoText"
+    [ngClass]="{'infobox-active': selectedIndex===i}"></app-infobox>
+    <div class="carousel-dot-container">
+        <span *ngFor="let dot of images; let i=index"
+        class="dot"
+        [ngClass]="{'active':selectedIndex === i}"
+        (click)="selectImage(i)"></span>
+    </div>
+</div>
+<app-slider *ngIf="count==5"></app-slider>

@@ -1,0 +1,52 @@
+ /* ----neu --- von Carlo */
+
+ section {
+    display: table; 
+  }
+  
+  .label {
+    display: table-cell;
+    font-size: 14px;
+    margin-left: 8px;
+    min-width: 100%;
+    
+  }
+  .mat-icon_farbe{
+      background-color:#0286BC;
+      color:white;
+  }
+  .mat-icon_farbe_speziell{
+    background-color:#0286BC;
+    color:white;
+   
+}
+  .mat-Test{
+    
+      font-size: 100px;
+     
+  }
+  
+  .button-row {
+    display: table-cell;
+   
+  }
+  
+  .button-row .mat-button-base {
+    margin: 10px 10px 10px 10px;
+   
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10%;
+    
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+  

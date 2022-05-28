@@ -1,0 +1,23 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center">
+<div class="button-row" >
+    <div class="flex-container" fxFlex="100%" fxFlex.sm="100%" fxFlex.xm="100%" fxLayoutAlign="center center">
+      <div class="button-container">
+        <button mat-fab color="icon_farbe" (click)="onClickBefore()" aria-label="Zurück - Button um zum vorherigen Konfigurationsschritt zurückzukehren">
+          <mat-icon style="font-size: 35px;display: flex;align-items: center;justify-content: center;">skip_previous</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="50%"></div>
+      <div class="button-container">
+        <button mat-fab style="width:80px;height:80px;top: -15px;display: flex; justify-content: center;align-items: center;" color="icon_farbe_speziell" (click)="onClickAdd()" aria-label="Button zum Hinzufügen">
+          <mat-icon style="font-size: 80px;display: flex;align-items: center;justify-content: center;">add</mat-icon>
+        </button>
+      </div>
+      <div class="button-container">
+        <button mat-fab color="icon_farbe" (click)="onClickNext()" aria-label="Vorwärts - Button um zum nächsten Konfigurationsschritt zu gelangen">
+          <mat-icon style="font-size: 35px;display: flex;align-items: center;justify-content: center;">skip_next</mat-icon>
+        </button>
+      </div>    
+</div>
+</div>
+</div>
+

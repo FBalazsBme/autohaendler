@@ -1,0 +1,269 @@
+{
+    "openapi" : "3.0.1",
+    "info" : {
+      "title" : "Merlin CPQ",
+      "contact" : {
+        "name" : "CAS Merlin",
+        "url" : "https://www.cas-merlin.de/"
+      }
+    },
+    "servers" : [ {
+      "url" : "/m.settings",
+      "description" : "M.Settings service endpoint"
+    } ],
+    "paths" : {
+      "/api/connectedSystems" : {
+        "get" : {
+          "tags" : [ "Settings" ],
+          "description" : "Returns a list of links to registered merlin clients and services",
+          "operationId" : "connectedSystems",
+          "responses" : {
+            "default" : {
+              "description" : "default response",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/ConnectedSystemsResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/list" : {
+        "get" : {
+          "tags" : [ "Settings" ],
+          "description" : "Returns a list of merlin settings for the given key prefix",
+          "operationId" : "list",
+          "parameters" : [ {
+            "name" : "prefix",
+            "in" : "query",
+            "schema" : {
+              "type" : "string"
+            }
+          } ],
+          "responses" : {
+            "default" : {
+              "description" : "default response",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/MultiSettingResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/query" : {
+        "get" : {
+          "tags" : [ "Settings" ],
+          "description" : "Returns merlin settings for the given key",
+          "operationId" : "query",
+          "parameters" : [ {
+            "name" : "key",
+            "in" : "query",
+            "description" : "lookup key",
+            "schema" : {
+              "type" : "string"
+            }
+          } ],
+          "responses" : {
+            "default" : {
+              "description" : "default response",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/SingleSettingResponse"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post" : {
+          "tags" : [ "Settings" ],
+          "description" : "Returns merlin settings for the given keys",
+          "operationId" : "queryMany",
+          "requestBody" : {
+            "description" : "request containing requested keys",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SettingsRequest"
+                }
+              }
+            }
+          },
+          "responses" : {
+            "default" : {
+              "description" : "default response",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/MultiSettingResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/api/store" : {
+        "post" : {
+          "tags" : [ "Settings" ],
+          "operationId" : "store",
+          "requestBody" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StoreSettingRequest"
+                }
+              }
+            }
+          },
+          "responses" : {
+            "default" : {
+              "description" : "default response",
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/StoreSettingResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components" : {
+      "schemas" : {
+        "ClientLinkResponse" : {
+          "type" : "object",
+          "properties" : {
+            "clientId" : {
+              "type" : "string"
+            },
+            "url" : {
+              "type" : "string"
+            }
+          },
+          "description" : "Response object for Merlin Client and Service Urls"
+        },
+        "ConnectedSystemsResponse" : {
+          "type" : "object",
+          "properties" : {
+            "success" : {
+              "type" : "boolean"
+            },
+            "clients" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/ClientLinkResponse"
+              }
+            },
+            "services" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/ServiceLinkResponse"
+              }
+            }
+          },
+          "description" : "Response object for Merlin Client and Service Urls"
+        },
+        "ServiceLinkResponse" : {
+          "type" : "object",
+          "properties" : {
+            "serviceId" : {
+              "type" : "string"
+            },
+            "internalUrl" : {
+              "type" : "string"
+            },
+            "externalUrl" : {
+              "type" : "string"
+            }
+          },
+          "description" : "Response object for Merlin Client and Service Urls"
+        },
+        "MultiSettingResponse" : {
+          "type" : "object",
+          "properties" : {
+            "success" : {
+              "type" : "boolean"
+            },
+            "values" : {
+              "type" : "object",
+              "additionalProperties" : {
+                "type" : "string",
+                "description" : "Key value mapping for merlin settings"
+              },
+              "description" : "Key value mapping for merlin settings"
+            },
+            "missing" : {
+              "type" : "array",
+              "description" : "List of keys that could not be found",
+              "items" : {
+                "type" : "string",
+                "description" : "List of keys that could not be found"
+              }
+            }
+          },
+          "description" : "Request object for fetching merlin settings"
+        },
+        "SingleSettingResponse" : {
+          "type" : "object",
+          "properties" : {
+            "success" : {
+              "type" : "boolean"
+            },
+            "value" : {
+              "type" : "string"
+            }
+          }
+        },
+        "SettingsRequest" : {
+          "type" : "object",
+          "properties" : {
+            "keys" : {
+              "type" : "array",
+              "description" : "Requested keys",
+              "items" : {
+                "type" : "string",
+                "description" : "Requested keys"
+              }
+            }
+          },
+          "description" : "Request object for fetching merlin settings"
+        },
+        "StoreSettingResponse" : {
+          "type" : "object",
+          "properties" : {
+            "success" : {
+              "type" : "boolean"
+            },
+            "key" : {
+              "type" : "string"
+            },
+            "oldValue" : {
+              "type" : "string"
+            }
+          }
+        },
+        "StoreSettingRequest" : {
+          "type" : "object",
+          "properties" : {
+            "key" : {
+              "type" : "string"
+            },
+            "value" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  }

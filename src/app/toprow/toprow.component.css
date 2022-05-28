@@ -1,0 +1,61 @@
+ /* ----neu --- von Carlo */ 
+
+ .banner {
+  display: block;
+  width: 40%;
+  height: 20%;
+  margin-top: 3%;
+
+ }
+.toprow-button-container {
+    margin-left: 3%;
+    margin-right:3%;
+
+  }
+  .toprow-button-close {
+    margin-top: -3%;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    
+  }
+  .toprow-button-share {
+    margin-top: -3%;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+  }
+  
+ section {
+    display: table; 
+  }
+  .mat-icon_farbe{
+      background-color:#0286BC;
+      color:white;
+  
+     
+  }
+  .mat-icon_farbe_speziell{
+    background-color:#0286BC;
+    color:white;
+   
+}
+  .toprow-row {
+    display: flex;
+  padding-top:2px;
+  padding-left: -0px;
+
+  }
+  
+  .toprow-row .mat-button-base {
+    margin: 20px 20px 20px 20px;
+    
+  }
+  .flex-container {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: absolute;
+    width: 100%;
+   
+  }
+ 
