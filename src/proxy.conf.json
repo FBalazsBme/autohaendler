@@ -1,7 +1,0 @@
-{
-  "*/api/": {
-      "target": "https://hka.cas-merlin.de/",
-      "secure": false,
-      "logLevel": "debug"
-  }
-}
