@@ -16,6 +16,7 @@ export class SliderComponent implements OnInit {
   }
 
   emitValue(event: MatSliderChange) {
-
+    const selection: number = event.value === null ? 0 : event.value;
+    this.selectPicture.emit(selection/2);
   }
 }

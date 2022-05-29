@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ConfigstepComponent } from '../configstep/configstep.component';
+import {Categories} from "../utils/categories";
 
 @Component({
   selector: 'app-overview',
@@ -9,6 +10,7 @@ import { ConfigstepComponent } from '../configstep/configstep.component';
 export class OverviewComponent {
 
   color: string;
+  categories = Categories;
 
 @Output('onTest') onChange = new EventEmitter<boolean>();
 
